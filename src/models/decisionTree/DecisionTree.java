@@ -68,7 +68,7 @@ public class DecisionTree {
 
         // === RECURSIVE STEP: Find the best split and continue building ===
 
-        // Use our "master tool" to find the best possible question for the current dataset.
+        // find the best possible question for the current dataset.
         BestSplitResult bestSplit = findBestSplit(data);
 
         // Condition 4: Another stopping condition. If findBestSplit couldn't find a split that
