@@ -1,6 +1,5 @@
 package models.decisionTree;
 
-
 import data.DataPoint;
 import java.util.List;
 

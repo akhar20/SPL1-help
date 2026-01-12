@@ -4,9 +4,9 @@ import data.DataPoint;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
+//import java.util.Map;
 import java.util.Set;
 
 /**
@@ -51,8 +51,6 @@ public class DecisionTree {
      * The main recursive method that builds the tree.
      * This will be implemented in the next step. It's the core of the "assembly line."
      */
-    // Replace the empty buildTree method in DecisionTree.java with this.
-
     private Node buildTree(List<DataPoint> data, int currentDepth) {
         // === BASE CASES: These are the stopping conditions for the recursion ===
 
@@ -78,21 +76,18 @@ public class DecisionTree {
             return new Node(leafPrediction);
         }
 
-        // If we've made it this far, we are creating a Decision Node.
 
         // Recursively call this function to build the "yes" (left) branch.
-        // We pass the left subset of data and increment the depth.
+        // pass the left subset of data and increment the depth.
         Node leftChild = buildTree(bestSplit.getLeftData(), currentDepth + 1);
 
         // Recursively call this function to build the "no" (right) branch.
         Node rightChild = buildTree(bestSplit.getRightData(), currentDepth + 1);
 
-        // Create a new Decision Node that holds the best question and the two sub-trees we just built.
+        // Create a new Decision Node that holds the best question and the two sub-trees  just built.
         // This node is then returned up the chain to the function that called it.
         return new Node(bestSplit.getCondition(), leftChild, rightChild);
     }
-
-    // In DecisionTree.java, replace the empty predict method and add the new traverseTree method.
 
     /**
      * The main public method to make a prediction on a new, unseen data point.
@@ -121,7 +116,7 @@ public class DecisionTree {
 
         // --- RECURSIVE STEP ---
         // If it's not a leaf, it's a decision node. We must ask its question.
-        // Use the node's SplitCondition to check the student's features.
+        // Using the node's SplitCondition to check the student's features.
         if (node.getSplitCondition().matches(features)) {
             // If the condition is true (it matches), we continue traversing down the LEFT child.
             return traverseTree(features, node.getLeftChild());
@@ -147,8 +142,8 @@ public class DecisionTree {
             return 0.0;
         }
 
-        // Create an array to hold the counts. Index 0 for class 0, Index 1 for class 1, etc.
-        // We assume a maximum of 3 classes (0, 1, 2), so an array of size 3 is sufficient.
+        // Creating an array to hold the counts. Index 0 for class 0, Index 1 for class 1, etc.
+        // assume a maximum of 3 classes (0, 1, 2), so an array of size 3 is sufficient.
         int[] classCounts = new int[3];
 
         // Step 1: Count the occurrences of each class label.

@@ -13,7 +13,7 @@ public class Preprocessor {
      * @return A List containing two lists: the training set at index 0, and the testing set at index 1.
      */
     public static List<List<DataPoint>> splitData(List<DataPoint> data, double trainSplitRatio) {
-        // Create a mutable copy of the data to avoid modifying the original list.
+        // Creating a mutable copy of the data to avoid modifying the original list.
         List<DataPoint> shuffledData = new ArrayList<>(data);
 
         // Randomly shuffle the data. This is crucial to ensure that the train and test sets
