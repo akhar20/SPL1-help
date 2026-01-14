@@ -96,7 +96,6 @@ public class LogisticRegression {
     /**
      * A private helper to calculate the raw scores. (Z = X • W + b)
      */
-    // <-- FIX 2: Method moved outside of train()
     private double[] calculateScores(double[] features) {
         double[] scores = new double[biases.length];
         for (int j = 0; j < biases.length; j++) {

@@ -2,7 +2,7 @@ import data.DataLoader;
 import data.DataPoint;
 import data.Preprocessor;
 import models.decisionTree.DecisionTree;
-import models.logisticRegression.LogisticRegression; // <-- ADD THIS IMPORT
+import models.logisticRegression.LogisticRegression;
 
 import java.util.List;
 
@@ -45,7 +45,6 @@ public class Main {
         System.out.println("=> Decision Tree training complete.");
 
         // --- 5. Train and Test Logistic Regression ---
-        // (ADD THIS NEW SECTION)
         System.out.println("\n--- Training Logistic Regression model ---");
         // Hyperparameters: learningRate=0.01, epochs=100
         LogisticRegression logReg = new LogisticRegression(numFeatures, numClasses, 0.01, 100);
