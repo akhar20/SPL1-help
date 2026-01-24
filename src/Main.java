@@ -1,8 +1,9 @@
+// Import the new LogisticRegression class
 import data.DataLoader;
 import data.DataPoint;
 import data.Preprocessor;
 import models.decisionTree.DecisionTree;
-import models.logisticRegression.LogisticRegression;
+import models.logisticRegression.LogisticRegression; // <-- ADD THIS IMPORT
 
 import java.util.List;
 
@@ -33,20 +34,19 @@ public class Main {
         System.out.println("=> Training set size: " + trainingSet.size());
         System.out.println("=> Testing set size: " + testingSet.size());
 
-        // --- 3. Get Data Dimensions ---
-        // We need these values to initialize our models.
+        // --- 3. Get Data Dimensions (needed for model initialization) ---
         int numFeatures = trainingSet.get(0).getFeatureCount();
         int numClasses = 3; // Low, Moderate, High
 
         // --- 4. Train and Test Decision Tree ---
         System.out.println("\n--- Training Decision Tree model ---");
-        DecisionTree tree = new DecisionTree(10, 2);
+        DecisionTree tree = new DecisionTree(10, 2); // maxDepth=10, minSamplesSplit=2
         tree.train(trainingSet);
         System.out.println("=> Decision Tree training complete.");
 
-        // --- 5. Train and Test Logistic Regression ---
+        // --- 5. Train and Test Logistic Regression (NEW SECTION) ---
         System.out.println("\n--- Training Logistic Regression model ---");
-        // Hyperparameters: learningRate=0.01, epochs=100
+        // We choose some starting hyperparameters: learningRate=0.01, epochs=100
         LogisticRegression logReg = new LogisticRegression(numFeatures, numClasses, 0.01, 100);
         logReg.train(trainingSet);
         System.out.println("=> Logistic Regression training complete.");
@@ -55,7 +55,7 @@ public class Main {
         // --- 6. Perform Prediction Smoke Test ---
         System.out.println("\n--- Performing a single prediction test ---");
         if (!testingSet.isEmpty()) {
-            DataPoint studentToTest = testingSet.get(54);
+            DataPoint studentToTest = testingSet.get(6);
 
             System.out.println("  Student Features: " + java.util.Arrays.toString(studentToTest.getFeatures()));
             System.out.println("  Actual Label:       " + getLabelString(studentToTest.getLabel()));
