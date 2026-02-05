@@ -1,6 +1,5 @@
 package models.knn;
 
-// Add these new imports at the top of your KNN.java file
 import data.DataPoint;
 
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import java.util.Map;
 import java.util.HashMap;
 
 
-// Add the full content inside your KNN.java class
 public class KNN {
 
     private final int k;
