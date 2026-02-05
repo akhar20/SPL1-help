@@ -9,9 +9,6 @@ import java.util.List;
 
 public class Main {
 
-    /**
-     * A helper method to convert integer labels back to human-readable strings.
-     */
     private static String getLabelString(int label) {
         if (label == 0) {
             return "Low Stress";
@@ -27,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("--- Mental Health Stress Prediction System ---");
 
-        // --- 1. Load and Split Data ---
+        // Load and Split Data
         System.out.println("Step 1: Loading and splitting data...");
         DataLoader loader = new DataLoader();
         String filePath = "Processed.csv";
@@ -41,11 +38,9 @@ public class Main {
         System.out.println("=> Training set size: " + trainingSet.size());
         System.out.println("=> Testing set size: " + testingSet.size());
 
-        // Get data dimensions needed for model initialization
         int numFeatures = trainingSet.get(0).getFeatureCount();
         int numClasses = 3; // Low, Moderate, High
 
-        // --- 2. Train All Models ---
         System.out.println("\nStep 2: Training all models...");
 
         // Train Decision Tree
@@ -59,11 +54,11 @@ public class Main {
         System.out.println("=> Logistic Regression training complete.");
 
         // Train KNN
-        KNN knn = new KNN(5); // Using K=5 as a starting point
+        KNN knn = new KNN(5); // Using K=5
         knn.train(trainingSet);
         System.out.println("=> KNN training complete (data stored).");
 
-        // --- 3. Perform a Single Prediction "Smoke Test" ---
+        //"Smoke Test"
         System.out.println("\n--- Performing a single prediction test on one unseen student ---");
         if (!testingSet.isEmpty()) {
             DataPoint studentToTest = testingSet.get(0);
